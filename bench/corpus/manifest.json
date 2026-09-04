@@ -1,0 +1,884 @@
+[
+  {
+    "id": "article-2301-11955",
+    "url": "https://arxiv.org/pdf/2301.11955v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2302-06504",
+    "url": "https://arxiv.org/pdf/2302.06504v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2303-17703",
+    "url": "https://arxiv.org/pdf/2303.17703v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2310-04331",
+    "url": "https://arxiv.org/pdf/2310.04331v1",
+    "class": "article",
+    "pages": 11,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2311-03153",
+    "url": "https://arxiv.org/pdf/2311.03153v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2401-10895",
+    "url": "https://arxiv.org/pdf/2401.10895v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2402-03110",
+    "url": "https://arxiv.org/pdf/2402.03110v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2402-17861",
+    "url": "https://arxiv.org/pdf/2402.17861v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2403-06907",
+    "url": "https://arxiv.org/pdf/2403.06907v1",
+    "class": "article",
+    "pages": 8,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2404-03664",
+    "url": "https://arxiv.org/pdf/2404.03664v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2404-07142",
+    "url": "https://arxiv.org/pdf/2404.07142v1",
+    "class": "article",
+    "pages": 10,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2405-13695",
+    "url": "https://arxiv.org/pdf/2405.13695v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2405-15392",
+    "url": "https://arxiv.org/pdf/2405.15392v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2406-02618",
+    "url": "https://arxiv.org/pdf/2406.02618v1",
+    "class": "article",
+    "pages": 9,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2406-02717",
+    "url": "https://arxiv.org/pdf/2406.02717v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2406-04755",
+    "url": "https://arxiv.org/pdf/2406.04755v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2406-07843",
+    "url": "https://arxiv.org/pdf/2406.07843v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2406-08481",
+    "url": "https://arxiv.org/pdf/2406.08481v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2406-10288",
+    "url": "https://arxiv.org/pdf/2406.10288v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "article-2406-11431",
+    "url": "https://arxiv.org/pdf/2406.11431v1",
+    "class": "article",
+    "pages": 12,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "book-gutenberg-11",
+    "url": "gen:book:11",
+    "class": "book",
+    "pages": 6,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-120",
+    "url": "gen:book:120",
+    "class": "book",
+    "pages": 6,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-1342",
+    "url": "gen:book:1342",
+    "class": "book",
+    "pages": 8,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-1400",
+    "url": "gen:book:1400",
+    "class": "book",
+    "pages": 7,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-158",
+    "url": "gen:book:158",
+    "class": "book",
+    "pages": 6,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-16",
+    "url": "gen:book:16",
+    "class": "book",
+    "pages": 7,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-1661",
+    "url": "gen:book:1661",
+    "class": "book",
+    "pages": 8,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-174",
+    "url": "gen:book:174",
+    "class": "book",
+    "pages": 6,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-2701",
+    "url": "gen:book:2701",
+    "class": "book",
+    "pages": 10,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-345",
+    "url": "gen:book:345",
+    "class": "book",
+    "pages": 7,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-43",
+    "url": "gen:book:43",
+    "class": "book",
+    "pages": 7,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-55",
+    "url": "gen:book:55",
+    "class": "book",
+    "pages": 7,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-76",
+    "url": "gen:book:76",
+    "class": "book",
+    "pages": 7,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-84",
+    "url": "gen:book:84",
+    "class": "book",
+    "pages": 7,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "book-gutenberg-98",
+    "url": "gen:book:98",
+    "class": "book",
+    "pages": 7,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "id": "contract-edgar-a2024q4-ex10dd",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/813828/000081382825000005/a2024q4_ex10dd.htm",
+    "class": "contract",
+    "pages": 3,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-a2024q4-ex10y",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/813828/000081382825000005/a2024q4_ex10y.htm",
+    "class": "contract",
+    "pages": 3,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-acrs-20241231xex10d21",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/1557746/000155837025001819/acrs-20241231xex10d21.htm",
+    "class": "contract",
+    "pages": 10,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-brx-20250205ex101",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/1581068/000158106825000003/brx-20250205ex101.htm",
+    "class": "contract",
+    "pages": 2,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-ea022688301ex10-1-cleancore",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/1956741/000121390025001639/ea022688301ex10-1_cleancore.htm",
+    "class": "contract",
+    "pages": 7,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-ea022688301ex10-2-cleancore",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/1956741/000121390025001639/ea022688301ex10-2_cleancore.htm",
+    "class": "contract",
+    "pages": 7,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-ef20042243-ex10-2",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/1228627/000114036125001899/ef20042243_ex10-2.htm",
+    "class": "contract",
+    "pages": 3,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-ex-775754",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/1378590/000143774925003163/ex_775754.htm",
+    "class": "contract",
+    "pages": 10,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-exhibit1031-employmentagre",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/849395/000162828025008179/exhibit1031-employmentagre.htm",
+    "class": "contract",
+    "pages": 2,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-fnd-20241226x10kexx1036",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/1507079/000150707925000013/fnd-20241226x10kexx1036.htm",
+    "class": "contract",
+    "pages": 2,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-jakkex10-1",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/1009829/000118518525000146/jakkex10-1.htm",
+    "class": "contract",
+    "pages": 3,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-jakkex10-2",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/1009829/000118518525000146/jakkex10-2.htm",
+    "class": "contract",
+    "pages": 4,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-jilllramshawemploymentagre",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/67215/000006721525000002/jilllramshawemploymentagre.htm",
+    "class": "contract",
+    "pages": 10,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-tm251710d1-ex10-1",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/908937/000110465925000571/tm251710d1_ex10-1.htm",
+    "class": "contract",
+    "pages": 6,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "contract-edgar-tm257271d1-ex10-1",
+    "url": "gen:html:https://www.sec.gov/Archives/edgar/data/314489/000110465925016172/tm257271d1_ex10-1.htm",
+    "class": "contract",
+    "pages": 6,
+    "license": "SEC EDGAR public filing (public record)"
+  },
+  {
+    "id": "form-irs-f1040",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040.pdf",
+    "class": "form",
+    "pages": 2,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-f1040sa",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040sa.pdf",
+    "class": "form",
+    "pages": 1,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-f1040sb",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040sb.pdf",
+    "class": "form",
+    "pages": 1,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-f1040sc",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040sc.pdf",
+    "class": "form",
+    "pages": 2,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-f1040sd",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040sd.pdf",
+    "class": "form",
+    "pages": 2,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-f1040se",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040se.pdf",
+    "class": "form",
+    "pages": 2,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-f1099msc",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1099msc.pdf",
+    "class": "form",
+    "pages": 6,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-f2848",
+    "url": "https://www.irs.gov/pub/irs-pdf/f2848.pdf",
+    "class": "form",
+    "pages": 2,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-f4868",
+    "url": "https://www.irs.gov/pub/irs-pdf/f4868.pdf",
+    "class": "form",
+    "pages": 4,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-f8829",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8829.pdf",
+    "class": "form",
+    "pages": 1,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-f8863",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8863.pdf",
+    "class": "form",
+    "pages": 2,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-f941",
+    "url": "https://www.irs.gov/pub/irs-pdf/f941.pdf",
+    "class": "form",
+    "pages": 3,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-fss4",
+    "url": "https://www.irs.gov/pub/irs-pdf/fss4.pdf",
+    "class": "form",
+    "pages": 2,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-fw4",
+    "url": "https://www.irs.gov/pub/irs-pdf/fw4.pdf",
+    "class": "form",
+    "pages": 5,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "form-irs-fw9",
+    "url": "https://www.irs.gov/pub/irs-pdf/fw9.pdf",
+    "class": "form",
+    "pages": 6,
+    "license": "Public domain (US Government)"
+  },
+  {
+    "id": "invoice-gen-01",
+    "url": "gen:invoice:1",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-02",
+    "url": "gen:invoice:2",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-03",
+    "url": "gen:invoice:3",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-04",
+    "url": "gen:invoice:4",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-05",
+    "url": "gen:invoice:5",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-06",
+    "url": "gen:invoice:6",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-07",
+    "url": "gen:invoice:7",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-08",
+    "url": "gen:invoice:8",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-09",
+    "url": "gen:invoice:9",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-10",
+    "url": "gen:invoice:10",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-11",
+    "url": "gen:invoice:11",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-12",
+    "url": "gen:invoice:12",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-13",
+    "url": "gen:invoice:13",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-14",
+    "url": "gen:invoice:14",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-15",
+    "url": "gen:invoice:15",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-16",
+    "url": "gen:invoice:16",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-17",
+    "url": "gen:invoice:17",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "invoice-gen-18",
+    "url": "gen:invoice:18",
+    "class": "invoice",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-01",
+    "url": "gen:resume:1",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-02",
+    "url": "gen:resume:2",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-03",
+    "url": "gen:resume:3",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-04",
+    "url": "gen:resume:4",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-05",
+    "url": "gen:resume:5",
+    "class": "resume",
+    "pages": 2,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-06",
+    "url": "gen:resume:6",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-07",
+    "url": "gen:resume:7",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-08",
+    "url": "gen:resume:8",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-09",
+    "url": "gen:resume:9",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-10",
+    "url": "gen:resume:10",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-11",
+    "url": "gen:resume:11",
+    "class": "resume",
+    "pages": 2,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-12",
+    "url": "gen:resume:12",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-13",
+    "url": "gen:resume:13",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-14",
+    "url": "gen:resume:14",
+    "class": "resume",
+    "pages": 2,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-15",
+    "url": "gen:resume:15",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-16",
+    "url": "gen:resume:16",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-17",
+    "url": "gen:resume:17",
+    "class": "resume",
+    "pages": 2,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "resume-gen-18",
+    "url": "gen:resume:18",
+    "class": "resume",
+    "pages": 1,
+    "license": "Own generated (MIT)"
+  },
+  {
+    "id": "scan-edgar-acrs-20241231xex10d21",
+    "url": "gen:scan:contract-edgar-acrs-20241231xex10d21",
+    "class": "scan",
+    "pages": 10,
+    "license": "SEC EDGAR public filing (public record), rasterized"
+  },
+  {
+    "id": "scan-edgar-ea022688301ex10-1-cleancore",
+    "url": "gen:scan:contract-edgar-ea022688301ex10-1-cleancore",
+    "class": "scan",
+    "pages": 7,
+    "license": "SEC EDGAR public filing (public record), rasterized"
+  },
+  {
+    "id": "scan-edgar-ea022688301ex10-2-cleancore",
+    "url": "gen:scan:contract-edgar-ea022688301ex10-2-cleancore",
+    "class": "scan",
+    "pages": 7,
+    "license": "SEC EDGAR public filing (public record), rasterized"
+  },
+  {
+    "id": "scan-edgar-ex-775754",
+    "url": "gen:scan:contract-edgar-ex-775754",
+    "class": "scan",
+    "pages": 10,
+    "license": "SEC EDGAR public filing (public record), rasterized"
+  },
+  {
+    "id": "scan-edgar-jakkex10-1",
+    "url": "gen:scan:contract-edgar-jakkex10-1",
+    "class": "scan",
+    "pages": 3,
+    "license": "SEC EDGAR public filing (public record), rasterized"
+  },
+  {
+    "id": "scan-gutenberg-11",
+    "url": "gen:scan:book-gutenberg-11",
+    "class": "scan",
+    "pages": 6,
+    "license": "Public domain (Project Gutenberg), rasterized"
+  },
+  {
+    "id": "scan-gutenberg-1342",
+    "url": "gen:scan:book-gutenberg-1342",
+    "class": "scan",
+    "pages": 8,
+    "license": "Public domain (Project Gutenberg), rasterized"
+  },
+  {
+    "id": "scan-gutenberg-1661",
+    "url": "gen:scan:book-gutenberg-1661",
+    "class": "scan",
+    "pages": 8,
+    "license": "Public domain (Project Gutenberg), rasterized"
+  },
+  {
+    "id": "scan-gutenberg-2701",
+    "url": "gen:scan:book-gutenberg-2701",
+    "class": "scan",
+    "pages": 10,
+    "license": "Public domain (Project Gutenberg), rasterized"
+  },
+  {
+    "id": "scan-gutenberg-84",
+    "url": "gen:scan:book-gutenberg-84",
+    "class": "scan",
+    "pages": 7,
+    "license": "Public domain (Project Gutenberg), rasterized"
+  },
+  {
+    "id": "slides-ntrs-20110016142",
+    "url": "https://ntrs.nasa.gov/api/citations/20110016142/downloads/20110016142.pdf",
+    "class": "slides",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20140009119",
+    "url": "https://ntrs.nasa.gov/api/citations/20140009119/downloads/20140009119.pdf",
+    "class": "slides",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20160001785",
+    "url": "https://ntrs.nasa.gov/api/citations/20160001785/downloads/20160001785.pdf",
+    "class": "slides",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20170003924",
+    "url": "https://ntrs.nasa.gov/api/citations/20170003924/downloads/20170003924.pdf",
+    "class": "slides",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20170004523",
+    "url": "https://ntrs.nasa.gov/api/citations/20170004523/downloads/20170004523.pdf",
+    "class": "slides",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20170007766",
+    "url": "https://ntrs.nasa.gov/api/citations/20170007766/downloads/20170007766.pdf",
+    "class": "slides",
+    "pages": 10,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20170008110",
+    "url": "https://ntrs.nasa.gov/api/citations/20170008110/downloads/20170008110.pdf",
+    "class": "slides",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20180000398",
+    "url": "https://ntrs.nasa.gov/api/citations/20180000398/downloads/20180000398.pdf",
+    "class": "slides",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20205000148",
+    "url": "https://ntrs.nasa.gov/api/citations/20205000148/downloads/TestBed%20FL350.pdf",
+    "class": "slides",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20210010275",
+    "url": "https://ntrs.nasa.gov/api/citations/20210010275/downloads/UTM%20TIM%2001%20Project%20Overview%20and%20History%20Jung%20Final%20MG%20(1).pptx.pdf",
+    "class": "slides",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20210018838",
+    "url": "https://ntrs.nasa.gov/api/citations/20210018838/downloads/2021_Astrobee_Overview.pdf",
+    "class": "slides",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20210026173",
+    "url": "https://ntrs.nasa.gov/api/citations/20210026173/downloads/2022%2001%2004%20AAVP%20SciTech%20Interagency%20v1.pdf",
+    "class": "slides",
+    "pages": 10,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20220015005",
+    "url": "https://ntrs.nasa.gov/api/citations/20220015005/downloads/NASA%20Overview%20SGorton%2017Oct2022.pdf",
+    "class": "slides",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20230015294",
+    "url": "https://ntrs.nasa.gov/api/citations/20230015294/downloads/ASCEND_Artemis_Med_System_Dvlpnt_Ovrvw_Final.pdf",
+    "class": "slides",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "slides-ntrs-20260004306",
+    "url": "https://ntrs.nasa.gov/api/citations/20260004306/downloads/Castner%20AIAA%20Aviation%202026_FINAL.pdf",
+    "class": "slides",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  }
+]
