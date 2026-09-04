@@ -1,0 +1,231 @@
+<title>unprint Roadmap</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --ground:#F4F5F2;--surface:#FFFFFF;--ink:#1C1F1E;--muted:#667070;--rule:#D9DDD8;
+  --accent:#0E6B70;--accent-ink:#FFFFFF;--soft:#E3EFEE;
+  --done:#2E7D4F;--done-soft:#E1F0E6;--wait:#B7791F;--wait-soft:#F7ECD6;--todo:#8A9290;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#141716;--surface:#1C201E;--ink:#E8EAE6;--muted:#9AA39F;--rule:#2C312E;
+  --accent:#5CC4C8;--accent-ink:#0F1E1F;--soft:#1E2E2F;
+  --done:#6FCB94;--done-soft:#1D2F24;--wait:#E0A94A;--wait-soft:#332A17;--todo:#6E7674;
+}}
+:root[data-theme="dark"]{
+  --ground:#141716;--surface:#1C201E;--ink:#E8EAE6;--muted:#9AA39F;--rule:#2C312E;
+  --accent:#5CC4C8;--accent-ink:#0F1E1F;--soft:#1E2E2F;
+  --done:#6FCB94;--done-soft:#1D2F24;--wait:#E0A94A;--wait-soft:#332A17;--todo:#6E7674;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.5 "Source Sans 3",system-ui,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:40px 24px 80px}
+h1,h2,h3{font-family:"Bricolage Grotesque","Source Sans 3",sans-serif;text-wrap:balance;margin:0}
+h1{font-size:44px;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+h1 span{color:var(--accent)}
+.thesis{max-width:60ch;color:var(--muted);margin:12px 0 0;font-size:18px}
+.eyebrow{font:600 12px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+header{display:grid;gap:8px;padding-bottom:28px;border-bottom:1px solid var(--rule)}
+.meta{display:flex;gap:24px;flex-wrap:wrap;margin-top:18px;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:600}
+
+.strip{display:grid;grid-template-columns:repeat(11,1fr);gap:6px;margin:28px 0 8px}
+.tile{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:10px 8px;min-height:74px;display:grid;align-content:space-between;cursor:pointer;text-align:left;color:inherit;font:inherit}
+.tile:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tile .n{font:600 12px "JetBrains Mono",monospace;color:var(--muted)}
+.tile .t{font-size:13px;line-height:1.2;font-weight:600}
+.tile[data-s="done"]{border-color:var(--done);background:var(--done-soft)}
+.tile[data-s="in_progress"]{border-color:var(--accent);background:var(--soft)}
+.tile[data-s="awaiting_validation"]{border-color:var(--wait);background:var(--wait-soft)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:36px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;border:1px solid var(--rule)}
+.legend i.done{background:var(--done-soft);border-color:var(--done)}
+.legend i.prog{background:var(--soft);border-color:var(--accent)}
+.legend i.wait{background:var(--wait-soft);border-color:var(--wait)}
+
+.step{display:grid;grid-template-columns:150px 1fr;gap:28px;padding:32px 0;border-top:1px solid var(--rule)}
+.rail{display:grid;align-content:start;gap:8px}
+.rail .num{font:800 34px/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.02em}
+.pill{display:inline-block;font:600 11px/1 "JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase;padding:6px 8px;border-radius:4px;width:max-content;color:var(--todo);border:1px solid var(--rule)}
+.pill[data-s="done"]{color:var(--done);border-color:var(--done);background:var(--done-soft)}
+.pill[data-s="in_progress"]{color:var(--accent);border-color:var(--accent);background:var(--soft)}
+.pill[data-s="awaiting_validation"]{color:var(--wait);border-color:var(--wait);background:var(--wait-soft)}
+.rail .repo{font:13px "JetBrains Mono",monospace;color:var(--muted)}
+.rail .money{font-size:13px;color:var(--accent);font-weight:600}
+.body h2{font-size:24px;font-weight:700;letter-spacing:-.01em}
+.body .goal{margin:6px 0 18px;max-width:65ch}
+.cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.col h3{font-size:12px;font-family:"JetBrains Mono",monospace;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.col ul{margin:0;padding-left:18px;font-size:15px}
+.col li{margin:0 0 6px}
+.col.you{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:14px 16px}
+.col.you h3{color:var(--wait)}
+.col.you ul{list-style:none;padding:0}
+.col.you label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.col.you input{margin-top:5px;accent-color:var(--done)}
+.evidence{margin-top:16px;padding:12px 14px;background:var(--surface);border-left:3px solid var(--done);border-radius:0 6px 6px 0;font:13px/1.5 "JetBrains Mono",monospace;white-space:pre-wrap;overflow-x:auto}
+.cmd{display:inline-block;margin-top:14px;font:600 13px "JetBrains Mono",monospace;background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:6px 10px}
+.cmd::before{content:"say: ";color:var(--muted);font-weight:400}
+
+.gtm{margin-top:56px;padding-top:28px;border-top:1px solid var(--rule)}
+.gtm h2{font-size:28px;font-weight:700;margin-bottom:4px}
+.gtm p{color:var(--muted);max-width:65ch;margin:0 0 20px}
+.tl{display:grid;grid-template-columns:150px 1fr;gap:12px 20px;align-items:center}
+.tl .lbl{font-size:15px;font-weight:600}
+.tl .lbl small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.bar{position:relative;height:30px;background:var(--surface);border:1px solid var(--rule);border-radius:4px}
+.bar span{position:absolute;top:4px;bottom:4px;border-radius:3px;background:var(--accent);opacity:.9}
+.bar span.ramp{background:linear-gradient(90deg,transparent,var(--accent))}
+.months{display:grid;grid-template-columns:repeat(12,1fr);font:11px "JetBrains Mono",monospace;color:var(--muted);grid-column:2}
+.months div{text-align:left}
+.note{margin-top:18px;font-size:14px;color:var(--muted);max-width:65ch}
+@media (max-width:760px){
+  .strip{grid-template-columns:repeat(4,1fr)}
+  .step,.tl{grid-template-columns:1fr}
+  .cols{grid-template-columns:1fr}
+  .months{grid-column:1}
+  h1{font-size:34px}
+}
+@media (prefers-reduced-motion:no-preference){.tile{transition:transform .12s}.tile:hover{transform:translateY(-1px)}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">build roadmap · one step per session</div>
+  <h1>un<span>print</span></h1>
+  <p class="thesis">PDF → Word, converted inside the browser tab. The file never leaves the device. The layout engine gets measurably better every week; competitors' licensed engines cannot.</p>
+  <div class="meta">
+    <div>repo <b>~/open-source/unprint</b> (public, MIT)</div>
+    <div>engine <b>~/open-source/unprint-engine</b> (private)</div>
+    <div>domain <b>unprint.com</b></div>
+    <div>tiers <b>Free · Pro $5/mo · SDK $99+/mo</b></div>
+  </div>
+</header>
+
+<div class="strip" id="strip"></div>
+<div class="legend">
+  <span><i class="done"></i>done</span>
+  <span><i class="prog"></i>agent working</span>
+  <span><i class="wait"></i>awaiting your validation</span>
+  <span><i></i>not started</span>
+</div>
+
+<div id="steps"></div>
+
+<section class="gtm">
+  <h2>How it gets customers</h2>
+  <p>Three channels with three different clocks. The benchmark page is the centerpiece of all of them: it is the sales deck for the SDK, the content for the launch posts, and the page that earns links for search.</p>
+  <div class="tl">
+    <div class="lbl">SDK outreach<small>you email PDF-tool owners · week 1–3 after step 10</small></div>
+    <div class="bar"><span style="left:0;width:25%"></span></div>
+    <div class="lbl">Launch spikes<small>Reddit · Product Hunt · Substack (no HN, no Habr)</small></div>
+    <div class="bar"><span style="left:0;width:8%"></span><span style="left:12%;width:5%"></span></div>
+    <div class="lbl">Organic Google<small>long-tail pages from day 1 · head term “pdf to word” not before month 12</small></div>
+    <div class="bar"><span class="ramp" style="left:25%;width:75%"></span></div>
+    <div class="months"><div>m1</div><div>m2</div><div>m3</div><div>m4</div><div>m5</div><div>m6</div><div>m7</div><div>m8</div><div>m9</div><div>m10</div><div>m11</div><div>m12</div></div>
+  </div>
+  <p class="note">Month 1 on this scale starts when step 10 ships. Agents produce the prospect list, per-prospect benchmark files, the landing and SEO pages and the post drafts. You send the emails, post and reply. Full text: <code>docs/GO-TO-MARKET.md</code>.</p>
+</section>
+</div>
+
+<script>
+// Agents: update STATUS at the end of a step. status ∈ todo | in_progress | awaiting_validation | done
+const STATUS = {
+  "00": {status:"done", evidence:"2026-09-04 · repo, CLAUDE.md, SPEC, DECISIONS, GO-TO-MARKET, 10 step specs, this page."},
+  "01": {status:"todo", evidence:""},
+  "02": {status:"todo", evidence:""},
+  "03": {status:"todo", evidence:""},
+  "04": {status:"todo", evidence:""},
+  "05": {status:"todo", evidence:""},
+  "06": {status:"todo", evidence:""},
+  "07": {status:"todo", evidence:""},
+  "08": {status:"todo", evidence:""},
+  "09": {status:"todo", evidence:""},
+  "10": {status:"todo", evidence:""},
+};
+
+const STEPS = [
+ {n:"00", t:"Plan", repo:"unprint", goal:"Repository, specs, locked decisions, go-to-market and this roadmap exist so every later session starts with full context.",
+  agent:["README, CLAUDE.md agent protocol","SPEC.md: product, architecture, engine API, scorer","DECISIONS.md: 12 locked choices","10 step specs in docs/steps/"],
+  auto:["Files exist, committed"],
+  you:["Read DECISIONS.md; object now or never","Register unprint.com","Create GitHub repo `unprint` (public)"]},
+ {n:"01", t:"Benchmark", repo:"unprint", goal:"A reproducible score. Any converter can be run through the same scorer and compared per document class. This is the acceptance test for every engine step.",
+  agent:["Corpus manifest: ≥120 open-licensed PDFs in 8 classes (article, invoice, resume, contract, form, slides, scan, book)","Scorer: text F1 (60%) + visual SSIM (40%) → 0–100","Baselines: pdf2docx (AGPL, eval-only) and plain-text floor","HTML report with worst-10 side-by-side thumbnails"],
+  auto:["Both baselines run on the full corpus","Scorer self-check: identical doc ≥ 95, empty doc ≤ 10"],
+  you:["Open the report: class breakdown looks sane?","Open 5 worst-10 pairs: real layout failures, or scorer bug?","Spot-check 5 manifest licenses"]},
+ {n:"02", t:"Extract", repo:"unprint-engine", goal:"extract(pdf) → PageModel[]: every glyph run with position, font, bold/italic, color; every image; every vector rectangle. No layout yet.",
+  agent:["Create private repo unprint-engine (@unprint/engine)","pdf.js extraction, coordinate normalization, run merging","Font family + bold/italic normalization","6 golden-test PDFs with expected JSON"],
+  auto:["Golden tests pass","Median page < 50 ms","Text F1 vs raw pdf.js ≥ 0.98 (nothing lost)"],
+  you:["Run `npm run dump` on an article page: boxes and bold flags match the PDF?","Engine repo is private on GitHub"]},
+ {n:"03", t:"Paragraphs", repo:"unprint-engine", goal:"First end-to-end DOCX. Single-column prose becomes real paragraphs, headings become heading styles, bullets become Word lists.",
+  agent:["Lines → paragraphs → headings → lists","docx writer with page geometry","convert(pdf) wired end to end"],
+  auto:["Unit tests per module incl. justified-text guard","Bench: unprint ≥ pdf2docx on book, contract, resume"],
+  you:["Convert 3 of your own PDFs; open in Word","Paragraphs are paragraphs, not one line each","Headings show in Word's Navigation pane","Enter continues a list"]},
+ {n:"04", t:"Columns", repo:"unprint-engine", goal:"Multi-column pages come out as Word sections with the right column count and reading order. Where every client-side competitor breaks.",
+  agent:["Gutter/XY-cut column detection, N columns","Spanning blocks (title, figure), mid-page column switch","Reading order"],
+  auto:["Unit tests incl. false-positive guard","Bench: unprint ≥ pdf2docx on article, no regression >1 elsewhere"],
+  you:["Two arXiv papers + one magazine PDF: Select All → paste as text reads in order?","Title full-width, not stuffed in column 1"]},
+ {n:"05", t:"Tables", repo:"unprint-engine", goal:"Ruled tables from lines, unruled tables from text alignment. Rows never collapse into paragraphs; paragraphs never become a table.",
+  agent:["Ruled grid from rects, merged cells","Unruled: x-aligned column starts across ≥3 lines","Cell text, numeric right-align, borders only if source had them"],
+  auto:["Unit tests incl. address-block guard","Bench: unprint ≥ pdf2docx on invoice, form"],
+  you:["Two invoices + a bank statement: numbers in cells, summable?","Resume two-column skills block stayed layout, not a bordered table"]},
+ {n:"06", t:"Images & fonts", repo:"unprint-engine", goal:"Visual fidelity: images placed and wrapped, captions kept, fonts mapped to nearest family, colors kept, headers/footers and page numbers in the right place.",
+  agent:["Inline vs floating image placement","Header/footer detection, page-number field","40-family font map with serif/sans/mono fallback","Colors and shading"],
+  auto:["Visual score +5 avg vs step 05","unprint ≥ pdf2docx on every class except scan"],
+  you:["Brochure + paper with figures: images present, right place, captions?","Page numbers in the footer, not the body","Font looks like the original at a glance"]},
+ {n:"07", t:"Web app", repo:"unprint", goal:"unprint.com is live: drop a PDF, get a DOCX, nothing uploaded. Installable, offline. Free limits enforced. Privacy claim verifiable in DevTools.",
+  agent:["Vite + vanilla TS, engine in a Web Worker","Side-by-side preview, download, batch (Pro)","PWA offline, strict CSP, cookieless analytics","Landing copy, FAQ, Cloudflare Pages deploy via GitHub Actions","Wizard for you: DNS, Cloudflare"],
+  auto:["Playwright: no request body >1 KB during conversion","Lighthouse PWA installable, perf ≥90 mobile","Deployed URL 200"],
+  you:["On your phone: convert a 30-page PDF; free limit kicks in correctly","Airplane mode, reopen installed app: works","DevTools Network during conversion: nothing uploaded"]},
+ {n:"08", t:"Payments", repo:"unprint", money:"first $ possible", goal:"Pro is purchasable in two clicks, unlocked by license key, works offline after activation. Account-less: the key is the account.",
+  agent:["Lemon Squeezy products: $5/mo, $29/yr, checkout overlay","License activation + 7-day revalidation + offline grace","Pro gates: limits off, batch, OCR flag","Wizard for you: merchant account"],
+  auto:["Playwright with faked license API: activate → reload offline → still Pro","Real test-mode purchase end to end (screenshot)"],
+  you:["Buy Pro with your own card in live mode, then refund yourself","Activate on phone + laptop with the same key"]},
+ {n:"09", t:"OCR", repo:"both", goal:"Scanned (image-only) PDFs produce editable text with layout, in the browser, Pro only.",
+  agent:["tesseract.js worker, lazy language packs (eng, spa, por, hin, ind, rus, deu, fra)","Scan detection; OCR output feeds the existing layout pipeline","UI: toggle, language, per-page progress and time estimate"],
+  auto:["Bench scan class: text F1 ≥ 0.85 (eng)","OCR never triggers on text PDFs (no regression)"],
+  you:["Scan a page with your phone, convert: text right, paragraphs kept?","Mixed PDF: only the scanned page ran OCR"]},
+ {n:"10", t:"Launch kit", repo:"both", money:"SDK outreach starts", goal:"Everything go-to-market needs: public benchmark page, SEO pages, the SDK package, a 100-prospect list, and post drafts.",
+  agent:["Score competitor DOCX you upload manually (iLovePDF, Smallpdf, Adobe) on a 30-doc public subset","Public benchmark page with methodology and honest worst cases","SEO pages from one template × intents × verticals × 4 languages, sitemap, hreflang","@unprint/engine package, PolyForm Noncommercial public terms + commercial grant, docs/sdk.md","docs/prospects.csv (100 rows) + per-prospect email with their file benchmarked","Reddit ×5, Product Hunt, Substack drafts"],
+  auto:["Benchmark page live, Lighthouse SEO 100","SDK demo works from a fresh directory with a key","Sitemap submitted to Search Console"],
+  you:["Upload the 30-doc subset to iLovePDF / Smallpdf / Adobe, save the DOCX files","Read the benchmark page as a skeptical buyer","Send the first 10 prospect emails","Post the drafts"]},
+];
+
+function pillText(s){return {todo:"not started",in_progress:"agent working",awaiting_validation:"validate",done:"done"}[s]}
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+
+const strip=document.getElementById("strip");
+const stepsEl=document.getElementById("steps");
+for(const s of STEPS){
+  const st=STATUS[s.n]||{status:"todo",evidence:""};
+  const tile=document.createElement("button");
+  tile.className="tile";tile.dataset.s=st.status;
+  tile.innerHTML=`<span class="n">${s.n}</span><span class="t">${s.t}</span>`;
+  tile.onclick=()=>document.getElementById("s"+s.n).scrollIntoView({behavior:"smooth",block:"start"});
+  strip.appendChild(tile);
+
+  const el=document.createElement("article");
+  el.className="step";el.id="s"+s.n;
+  const you=s.you.map((t,i)=>{const k=`unprint.${s.n}.${i}`;const c=ls(k)==="1"?"checked":"";
+    return `<li><label><input type="checkbox" data-k="${k}" ${c}><span>${t}</span></label></li>`}).join("");
+  el.innerHTML=`
+    <div class="rail">
+      <div class="num">${s.n}</div>
+      <span class="pill" data-s="${st.status}">${pillText(st.status)}</span>
+      <div class="repo">${s.repo}</div>
+      ${s.money?`<div class="money">${s.money}</div>`:""}
+    </div>
+    <div class="body">
+      <h2>${s.t}</h2>
+      <p class="goal">${s.goal}</p>
+      <div class="cols">
+        <div class="col"><h3>Agent builds</h3><ul>${s.agent.map(t=>`<li>${t}</li>`).join("")}</ul></div>
+        <div class="col"><h3>Passes automatically when</h3><ul>${s.auto.map(t=>`<li>${t}</li>`).join("")}</ul></div>
+        <div class="col you"><h3>You validate</h3><ul>${you}</ul></div>
+      </div>
+      ${st.evidence?`<div class="evidence">${st.evidence}</div>`:""}
+      ${s.n!=="00"?`<span class="cmd">Implement step ${s.n}</span>`:""}
+    </div>`;
+  stepsEl.appendChild(el);
+}
+document.addEventListener("change",e=>{if(e.target.matches("input[data-k]"))ls(e.target.dataset.k,e.target.checked?"1":"0")});
+</script>
