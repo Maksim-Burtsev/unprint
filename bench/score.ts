@@ -14,9 +14,9 @@ export type DocResult = { id: string; class: string; pages: number; text: number
 export type Results = { engine: string; date: string; docs: DocResult[] };
 
 /** Pure scorer: original PDF vs produced DOCX. cacheDir holds the DOCX→PDF and both rasters. */
-export async function scoreDoc(pdf: string, docx: string, cacheDir: string, origRasterDir = join(cacheDir, "orig")) {
+export async function scoreDoc(pdf: string, docx: string, cacheDir: string, origRasterDir = join(cacheDir, "orig"), textPdf = pdf) {
   const convPdf = docxToPdf(docx, cacheDir);
-  const text = textScore((await pdfText(pdf)).join("\n"), docxText(docx));
+  const text = textScore((await pdfText(textPdf)).join("\n"), docxText(docx));
   const visual = visualScore(rasterize(pdf, origRasterDir), rasterize(convPdf, join(cacheDir, "conv")));
   return { text, visual, score: 100 * (0.6 * text + 0.4 * visual) };
 }
@@ -60,7 +60,9 @@ async function main() {
     try {
       if (!existsSync(pdf)) throw new Error("missing PDF; run npm run corpus:fetch");
       if (values["no-cache"] || !existsSync(docx)) { rmSync(join(outDir, e.id), { recursive: true, force: true }); await engine(pdf, docx); }
-      const r = await scoreDoc(pdf, docx, join(outDir, e.id), join(RESULTS, "orig", e.id));
+      // An image-only scan has no text layer, so f1([], …) is meaningless: score its text against the source PDF it was rasterized from.
+      const textPdf = e.url.startsWith("gen:scan:") ? join(FILES, `${e.url.slice("gen:scan:".length)}.pdf`) : pdf;
+      const r = await scoreDoc(pdf, docx, join(outDir, e.id), join(RESULTS, "orig", e.id), textPdf);
       docs.push({ ...base, ...r, ms: Date.now() - t0 });
     } catch (err) {
       docs.push({ ...base, text: 0, visual: 0, score: 0, ms: Date.now() - t0, error: String((err as Error).message).slice(0, 300) });

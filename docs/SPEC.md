@@ -101,6 +101,9 @@ Scorer (`bench/score.ts`) per document:
    tokens. Original text comes from pdf.js `getTextContent` in item order, DOCX
    text from the `<w:t>` runs of `word/document.xml` with paragraphs joined by
    newlines. Bigrams make reading order count without an O(n·m) alignment.
+   For a `scan` document the reference is the pdf.js text of the source PDF
+   named in its `gen:scan:<source id>` url, since the image-only original has
+   no text layer of its own.
 2. `visual` (0–1): SSIM over non-overlapping 8×8 windows between the original
    page raster and the DOCX rendered back to PDF (LibreOffice headless,
    dev-only) then raster (pdftoppm), both at 72 dpi grayscale, with
