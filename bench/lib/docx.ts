@@ -3,7 +3,11 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { run } from "./sh.js";
 
-const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+/** PDF text layers carry C0 controls (broken ToUnicode maps on ligatures); they are illegal in
+ *  XML 1.0, so an unstripped one makes document.xml malformed and LibreOffice rejects the DOCX. */
+const esc = (s: string) =>
+  s.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\uFFFE\uFFFF]/g, "")
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const CONTENT_TYPES = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
