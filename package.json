@@ -9,6 +9,6 @@
     "corpus:fetch": "tsx bench/corpus/fetch.ts",
     "test": "tsc --noEmit && vitest run"
   },
-  "dependencies": { "pdfjs-dist": "^5.3.0" },
+  "dependencies": { "pdfjs-dist": "^6.3.0" },
   "devDependencies": { "typescript": "^5.9.0", "tsx": "^4.20.0", "vitest": "^3.2.0", "@types/node": "^22.0.0" }
 }
