@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, existsSync, mkdirSync, mkdtempSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync, mkdirSync, mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, basename } from "node:path";
 import { run, soffice } from "./sh.js";
@@ -29,7 +29,11 @@ export function rasterize(pdf: string, outDir: string, dpi = 72): Gray[] {
 export function docxToPdf(docx: string, outDir: string): string {
   mkdirSync(outDir, { recursive: true });
   const profile = mkdtempSync(join(tmpdir(), "lo-profile-"));
-  run(soffice(), [`-env:UserInstallation=file://${profile}`, "--headless", "--convert-to", "pdf", "--outdir", outDir, docx]);
+  try {
+    run(soffice(), [`-env:UserInstallation=file://${profile}`, "--headless", "--convert-to", "pdf", "--outdir", outDir, docx]);
+  } finally {
+    rmSync(profile, { recursive: true, force: true });
+  }
   const out = join(outDir, basename(docx).replace(/\.docx$/i, ".pdf"));
   if (!existsSync(out)) throw new Error(`soffice produced no PDF for ${docx}`);
   return out;
