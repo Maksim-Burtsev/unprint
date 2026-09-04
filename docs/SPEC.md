@@ -85,22 +85,46 @@ PDF's bottom-left origin at extraction time).
 `bench/corpus/manifest.json` lists every PDF: `{ id, url, class, pages, license }`.
 Classes: `article` (arXiv, multi-column), `invoice`, `resume`, `contract`,
 `form`, `slides`, `scan` (image-only), `book` (single column prose).
+`url` is either an `https://…` source or `gen:<kind>:<arg>` for documents we
+generate ourselves: `gen:invoice:<seed>`, `gen:resume:<seed>`,
+`gen:book:<gutenberg id>`, `gen:html:<url>` (an HTML source paginated by
+LibreOffice), `gen:scan:<source id>` (another manifest entry rasterized to an
+image-only PDF). `pages` is the number of pages *kept*: `npm run corpus:fetch`
+truncates longer files to the first `pages` pages (≤ 12), which bounds run
+time. Current corpus: 126 documents — article 20, book 15, contract 15,
+form 15, invoice 18, resume 18, scan 10, slides 15.
 PDFs are downloaded by `npm run corpus:fetch`, never committed.
 
 Scorer (`bench/score.ts`) per document:
 
-1. `text` (0–1): token-level F1 between reading-order text of the original
-   (pdf.js) and of the produced DOCX (unzipped `word/document.xml`).
-2. `visual` (0–1): mean per-page SSIM between the original page raster and
-   the DOCX rendered back to PDF (LibreOffice headless, dev-only) then raster
-   (pdftoppm). Both at 72 dpi grayscale.
+1. `text` (0–1): mean of unigram F1 and bigram F1 over lowercase `\p{L}\p{N}`
+   tokens. Original text comes from pdf.js `getTextContent` in item order, DOCX
+   text from the `<w:t>` runs of `word/document.xml` with paragraphs joined by
+   newlines. Bigrams make reading order count without an O(n·m) alignment.
+2. `visual` (0–1): SSIM over non-overlapping 8×8 windows between the original
+   page raster and the DOCX rendered back to PDF (LibreOffice headless,
+   dev-only) then raster (pdftoppm), both at 72 dpi grayscale, with
+   C1 = (0.01·255)² and C2 = (0.03·255)². The converted rendering is padded
+   with white or cropped to the original page size. Windows blank in both
+   images (variance < 1) are skipped, so a blank page does not score ~0.7
+   against a page of text; if every window is blank, `visual` = 1. Converted
+   pages beyond the original's count are ignored, missing ones score 0; the
+   per-document `visual` is the mean over original pages.
 3. `score = 100 * (0.6 * text + 0.4 * visual)`.
 
+A document whose conversion or scoring throws gets `text` = `visual` = 0 and an
+`error` string. Class means include those zeros; the error count is printed
+next to the mean.
+
+Results land in `bench/results/<engine>.json` —
+`{ engine, date, docs: [{ id, class, pages, text, visual, score, ms, error? }] }`.
+CLI flags: `--only <id>`, `--limit <n>`, `--no-cache`.
+
 Report: `bench/report/index.html` — table by class, per-doc rows, worst-10
-with side-by-side thumbnails. Baselines run through the same scorer:
-`pdf2docx` (local, AGPL, eval-only), and manual uploads to iLovePDF /
-Smallpdf / Adobe for the public comparison (done once per release by hand,
-stored under `bench/report/competitors/`).
+with side-by-side thumbnails (first page at 40 dpi, per engine). Baselines run
+through the same scorer: `pdf2docx` (local, AGPL, eval-only), and manual
+uploads to iLovePDF / Smallpdf / Adobe for the public comparison (done once per
+release by hand, stored under `bench/report/competitors/`).
 
 ### Web
 
