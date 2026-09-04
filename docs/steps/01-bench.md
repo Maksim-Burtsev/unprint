@@ -8,6 +8,9 @@ PDF→DOCX converter through the same scorer and get a score per document
 class. This is the acceptance test for every later step.
 
 ## Deliverables
+- Repo toolchain (this is the first code in the repo): `package.json`
+  (private, `type: module`), TypeScript strict, `vitest`, `tsx` for scripts,
+  `npm run bench`, `npm run corpus:fetch`, `npm test`. Node ≥ 22.
 - `bench/corpus/manifest.json`: ≥ 120 PDFs across the 8 classes in
   SPEC § Benchmark (≥ 10 per class; `scan` class made by rasterizing 10
   `book`/`contract` docs to image-only PDFs). Sources: arXiv (CC-BY),
