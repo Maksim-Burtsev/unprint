@@ -9,7 +9,7 @@ centerpiece of all three channels.
 ## Deliverables
 - Competitor runs: human uploads the same 30-doc public subset to iLovePDF,
   Smallpdf, Adobe (free tiers), saves DOCX to
-  `bench/report/competitors/<vendor>/`; agent scores them.
+  `bench/competitors/<vendor>/<id>.docx` (scored with `--engine competitor:<vendor>`); agent scores them.
 - `web/benchmark/`: public page with methodology, per-class table, worst/
   best examples with side-by-side images, download of the corpus manifest
   and scorer. Updated by `npm run bench:publish`.
