@@ -104,15 +104,19 @@ Scorer (`bench/score.ts`) per document:
    For a `scan` document the reference is the pdf.js text of the source PDF
    named in its `gen:scan:<source id>` url, since the image-only original has
    no text layer of its own.
-2. `visual` (0–1): SSIM over non-overlapping 8×8 windows between the original
-   page raster and the DOCX rendered back to PDF (LibreOffice headless,
-   dev-only) then raster (pdftoppm), both at 72 dpi grayscale, with
-   C1 = (0.01·255)² and C2 = (0.03·255)². The converted rendering is padded
-   with white or cropped to the original page size. Windows blank in both
-   images (variance < 1) are skipped, so a blank page does not score ~0.7
-   against a page of text; if every window is blank, `visual` = 1. Converted
-   pages beyond the original's count are ignored, missing ones score 0; the
-   per-document `visual` is the mean over original pages.
+2. `visual` (0–1): ink overlap between the original page raster and the DOCX
+   rendered back to PDF (LibreOffice headless, dev-only) then raster
+   (pdftoppm), both at 72 dpi grayscale. Each page becomes an ink map on a
+   grid of 16 px cells (≈ two text lines at 72 dpi) taken from the original,
+   the cell value being mean darkness (255 − gray)/255 in [0,1]; each map is
+   blurred by a 3×3 box so a one-cell shift still overlaps; `visual` is the
+   weighted Jaccard Σ min(A,B) / Σ max(A,B) over the cells, and 1 when both
+   pages are blank. The converted rendering is padded with white or cropped
+   to the original page size. Pixel SSIM was tried first and rejected: it
+   punished a few-pixel baseline shift or a substituted font almost like a
+   blank page. Converted pages beyond the original's count are ignored,
+   missing ones score 0; the per-document `visual` is the mean over original
+   pages.
 3. `score = 100 * (0.6 * text + 0.4 * visual)`.
 
 A document whose conversion or scoring throws gets `text` = `visual` = 0 and an
@@ -123,11 +127,14 @@ Results land in `bench/results/<engine>.json` —
 `{ engine, date, docs: [{ id, class, pages, text, visual, score, ms, error? }] }`.
 CLI flags: `--only <id>`, `--limit <n>`, `--no-cache`.
 
-Report: `bench/report/index.html` — table by class, per-doc rows, worst-10
-with side-by-side thumbnails (first page at 40 dpi, per engine). Baselines run
-through the same scorer: `pdf2docx` (local, AGPL, eval-only), and manual
-uploads to iLovePDF / Smallpdf / Adobe for the public comparison (done once per
-release by hand, stored under `bench/report/competitors/`).
+Report: `bench/report/index.html` — table by class (n per engine), per-doc
+rows, and the worst 3 documents of every class per engine with side-by-side
+thumbnails (first page at 40 dpi). Every row links to the original PDF and to
+each engine's DOCX and rendered PDF. Baselines run through the same scorer:
+`pdf2docx` (local, AGPL, eval-only), and manual uploads to iLovePDF / Smallpdf
+/ Adobe for the public comparison (done once per release by hand, dropped as
+`bench/competitors/<name>/<id>.docx` and scored with
+`--engine competitor:<name>`).
 
 ### Web
 
