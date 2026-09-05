@@ -2,7 +2,7 @@ node_modules/
 dist/
 bench/corpus/files/
 bench/results/
-bench/report/competitors/**/*.docx
+bench/competitors/
 .DS_Store
 bench/report/index.html
 bench/report/thumbs/

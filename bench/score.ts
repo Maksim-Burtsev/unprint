@@ -48,11 +48,15 @@ function printTable(docs: DocResult[]): void {
 async function main() {
   const { values } = parseArgs({ options: { engine: { type: "string" }, only: { type: "string" }, limit: { type: "string" }, "no-cache": { type: "boolean" } } });
   if (!values.engine) throw new Error("usage: npm run bench -- --engine <name> [--only id] [--limit n] [--no-cache]");
-  const engine = (await import(`./engines/${values.engine}.ts`)).default as Engine;
+  // "competitor:ilovepdf" → adapter engines/competitor.ts, variant "ilovepdf", results under competitor-ilovepdf.
+  const [engineFile, variant] = values.engine.split(":") as [string, string?];
+  const name = values.engine.replace(":", "-");
+  if (variant) process.env.ENGINE_VARIANT = variant;
+  const engine = (await import(`./engines/${engineFile}.ts`)).default as Engine;
   let entries = JSON.parse(readFileSync(join(ROOT, "corpus", "manifest.json"), "utf8")) as Entry[];
   if (values.only) entries = entries.filter((e) => e.id === values.only);
   if (values.limit) entries = entries.slice(0, +values.limit);
-  const outDir = join(RESULTS, values.engine); mkdirSync(outDir, { recursive: true });
+  const outDir = join(RESULTS, name); mkdirSync(outDir, { recursive: true });
   const docs: DocResult[] = [];
   for (const e of entries) {
     const pdf = join(FILES, `${e.id}.pdf`), docx = join(outDir, `${e.id}.docx`), t0 = Date.now();
@@ -70,8 +74,8 @@ async function main() {
     const d = docs.at(-1)!; console.log(`${d.id.padEnd(28)} ${d.class.padEnd(9)} ${d.score.toFixed(1).padStart(5)} ${d.error ? "ERR " + d.error : ""}`);
   }
   // ponytail: sequential; soffice + pdf2docx dominate (~5 s/doc → ~10 min for 120 docs). Parallelize with per-worker soffice profiles if it hurts.
-  const merged = mergeResults(values.engine, docs, values.only || values.limit ? readExisting(values.engine) : []);
-  writeFileSync(join(RESULTS, `${values.engine}.json`), JSON.stringify(merged, null, 1));
+  const merged = mergeResults(name, docs, values.only || values.limit ? readExisting(name) : []);
+  writeFileSync(join(RESULTS, `${name}.json`), JSON.stringify(merged, null, 1));
   printTable(merged.docs);
   buildReport();
 }

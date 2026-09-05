@@ -11,6 +11,11 @@ The scorer needs `pdftoppm`, `pdfseparate`, `pdfunite`, `soffice`, `unzip`, `zip
 
 Flags: `--only <id>` scores one doc, `--limit <n>` the first n docs, `--no-cache` re-converts.
 Results: `bench/results/<engine>.json` (gitignored). Report: `bench/report/index.html`.
-Scorer: text = mean(unigram F1, bigram F1) of pdf.js text vs DOCX text; visual = mean SSIM
-(8×8 windows, windows blank in both images skipped) of 72 dpi grayscale pages, DOCX rendered
-back to PDF by LibreOffice; score = 100·(0.6·text + 0.4·visual). See docs/SPEC.md.
+Scorer: text = mean(unigram F1, bigram F1) of pdf.js text vs DOCX text; visual = ink overlap
+(16 px cells of mean darkness, 3×3 box blur, weighted Jaccard) of 72 dpi grayscale pages, DOCX
+rendered back to PDF by LibreOffice; score = 100·(0.6·text + 0.4·visual). See docs/SPEC.md.
+
+A competitor converted by hand (iLovePDF, Smallpdf, Adobe) is scored through the same pipeline:
+drop the files as `bench/competitors/ilovepdf/<id>.docx` (gitignored) and run
+`npm run bench -- --engine competitor:ilovepdf [--only <id>]`; documents with no file count as
+errors, and the results land in `bench/results/competitor-ilovepdf.json`.
