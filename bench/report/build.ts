@@ -11,11 +11,15 @@ const MANIFEST = join(ROOT, "..", "corpus", "manifest.json"), THUMBS = join(ROOT
 const ENT: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" };
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ENT[c]!);
 const mean = (ds: DocResult[], f: (d: DocResult) => number) => (ds.length ? ds.reduce((s, d) => s + f(d), 0) / ds.length : 0);
+/** Links into the local files, relative to bench/report/index.html. */
+const origLink = (id: string) => `<a href="../corpus/files/${esc(id)}.pdf">original</a>`;
+const engineLinks = (engine: string, id: string) =>
+  `<a href="../results/${esc(engine)}/${esc(id)}.docx">docx</a> <a href="../results/${esc(engine)}/${esc(id)}/${esc(id)}.pdf">pdf</a>`;
 /** Cell background, linear white (score 0) → green (score 100). */
 const bg = (score: number) => { const v = 255 - Math.round(1.3 * Math.max(0, Math.min(100, score))); return `background:rgb(${v},255,${v})`; };
 
 /** First page at 40 dpi → thumbs/<dir>/<id>.png; returns the relative src, or null when there is no PDF to render.
- *  ponytail: only the worst-10 documents are rendered, since they are the only ones the report shows. */
+ *  ponytail: only the documents the worst tables list are rendered, the only ones the report shows. */
 function thumb(pdf: string, dir: string, id: string): string | null {
   const out = join(THUMBS, dir, id), rel = `thumbs/${dir}/${id}.png`;
   if (existsSync(`${out}.png`)) return rel;
@@ -61,41 +65,47 @@ export function buildReport(): void {
   const summaryRow = (name: string, pick: (d: DocResult) => boolean) => {
     const cells = results.map((r) => {
       const ds = r.docs.filter(pick), s = mean(ds, (d) => d.score);
-      return `<td style="${bg(s)}">${s.toFixed(1)} <span class="sub">(${mean(ds, (d) => d.text).toFixed(2)}/${mean(ds, (d) => d.visual).toFixed(2)})</span></td>`;
+      return `<td>${ds.length}</td><td style="${bg(s)}">${s.toFixed(1)} <span class="sub">(${mean(ds, (d) => d.text).toFixed(2)}/${mean(ds, (d) => d.visual).toFixed(2)})</span></td>`;
     });
-    return `<tr><td>${esc(name)}</td><td>${all.filter(pick).length}</td>${cells.join("")}</tr>`;
+    return `<tr><td>${esc(name)}</td>${cells.join("")}</tr>`;
   };
   const classes = [...new Set(all.map((d) => d.class))].sort();
   const summary = `<table>
-<tr><th>class</th><th>n</th>${results.map((r) => `<th>${esc(r.engine)}<br><span class="sub">score (text/visual)</span></th>`).join("")}</tr>
+<tr><th rowspan="2">class</th>${results.map((r) => `<th colspan="2">${esc(r.engine)}</th>`).join("")}</tr>
+<tr>${results.map(() => `<th>n</th><th>score <span class="sub">(text/visual)</span></th>`).join("")}</tr>
 ${classes.map((c) => summaryRow(c, (d) => d.class === c)).join("\n")}
 ${summaryRow("all", () => true)}
 </table>`;
 
   const worst = results
     .map((r) => {
-      const rows = [...r.docs]
-        .sort((a, b) => a.score - b.score)
-        .slice(0, 10)
-        .map((d) => {
-          const orig = thumb(join(FILES, `${d.id}.pdf`), "orig", d.id);
-          const conv = thumb(join(RESULTS, r.engine, d.id, `${d.id}.pdf`), r.engine, d.id);
-          return `<tr><td class="id">${esc(d.id)}</td><td>${esc(d.class)}</td><td>${d.score.toFixed(1)}</td><td class="err">${esc(d.error ?? "")}</td>${thumbCell(orig, "no original PDF")}${thumbCell(conv, d.error ?? "no converted PDF")}</tr>`;
-        });
+      const rows = classes.flatMap((c) =>
+        r.docs
+          .filter((d) => d.class === c)
+          .sort((a, b) => a.score - b.score)
+          .slice(0, 3)
+          .map((d) => {
+            const orig = thumb(join(FILES, `${d.id}.pdf`), "orig", d.id);
+            const conv = thumb(join(RESULTS, r.engine, d.id, `${d.id}.pdf`), r.engine, d.id);
+            return `<tr><td>${esc(c)}</td><td class="id">${esc(d.id)}</td><td>${d.score.toFixed(1)}</td><td class="err">${esc(d.error ?? "")}</td><td><span class="sub">${origLink(d.id)} ${engineLinks(r.engine, d.id)}</span></td>${thumbCell(orig, "no original PDF")}${thumbCell(conv, d.error ?? "no converted PDF")}</tr>`;
+          }),
+      );
       return `<h3>${esc(r.engine)}</h3>
 <table>
-<tr><th>id</th><th>class</th><th>score</th><th>error</th><th>original</th><th>converted</th></tr>
+<tr><th>class</th><th>id</th><th>score</th><th>error</th><th>files</th><th>original</th><th>converted</th></tr>
 ${rows.join("\n")}
 </table>`;
     })
     .join("\n");
 
   const docRows = all.map((d) => {
-    const cells = byEngine.map((m) => {
+    const cells = byEngine.map((m, i) => {
       const e = m.get(d.id);
-      return e ? `<td style="${bg(e.score)}">${e.score.toFixed(1)}</td><td>${e.text.toFixed(3)}</td><td>${e.visual.toFixed(3)}</td><td>${e.ms}</td>` : "<td></td><td></td><td></td><td></td>";
+      return e
+        ? `<td style="${bg(e.score)}">${e.score.toFixed(1)}<br><span class="sub">${engineLinks(results[i]!.engine, d.id)}</span></td><td>${e.text.toFixed(3)}</td><td>${e.visual.toFixed(3)}</td><td>${e.ms}</td>`
+        : "<td></td><td></td><td></td><td></td>";
     });
-    return `<tr><td class="id">${esc(d.id)}</td><td>${esc(d.class)}</td><td>${d.pages}</td><td>${esc(license.get(d.id) ?? "")}</td>${cells.join("")}</tr>`;
+    return `<tr><td class="id">${esc(d.id)}<br><span class="sub">${origLink(d.id)}</span></td><td>${esc(d.class)}</td><td>${d.pages}</td><td>${esc(license.get(d.id) ?? "")}</td>${cells.join("")}</tr>`;
   });
   const docs = `<table>
 <tr><th rowspan="2">id</th><th rowspan="2">class</th><th rowspan="2">pages</th><th rowspan="2">license</th>${results.map((r) => `<th colspan="4">${esc(r.engine)}</th>`).join("")}</tr>
@@ -111,7 +121,7 @@ ${CSS}
 <p class="meta">generated ${new Date().toISOString()} &middot; corpus ${manifest.length || all.length} documents &middot; engines: ${esc(results.map((r) => r.engine).join(", "))}</p>
 <h2>Summary by class</h2>
 ${summary}
-<h2>Worst 10 per engine</h2>
+<h2>Worst 3 per class, per engine</h2>
 ${worst}
 <h2>All documents</h2>
 ${docs}
