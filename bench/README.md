@@ -11,6 +11,13 @@ The scorer needs `pdftoppm`, `pdfseparate`, `pdfunite`, `soffice`, `unzip`, `zip
 
 Flags: `--only <id>` scores one doc, `--limit <n>` the first n docs, `--no-cache` re-converts.
 Results: `bench/results/<engine>.json` (gitignored). Report: `bench/report/index.html`.
+
+The unprint engine lives in the private repo ../unprint-engine and is linked, not installed:
+`cd ../unprint-engine && npm link && cd ../unprint && npm link @unprint/engine`. Then
+`npm run bench -- --engine unprint` scores it and `npm run bench:extract` runs the step-02 extraction
+check (per-document ms/page and unigram F1 of extracted runs vs raw pdf.js text) over the corpus.
+`npm test` needs the link too.
+
 Scorer: text = mean(unigram F1, bigram F1) of pdf.js text vs DOCX text; visual = ink overlap
 (16 px cells of mean darkness, 3×3 box blur, weighted Jaccard) of 72 dpi grayscale pages, DOCX
 rendered back to PDF by LibreOffice; score = 100·(0.6·text + 0.4·visual). See docs/SPEC.md.

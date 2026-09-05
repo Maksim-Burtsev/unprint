@@ -6,6 +6,7 @@
   "engines": { "node": ">=22" },
   "scripts": {
     "bench": "tsx bench/score.ts",
+    "bench:extract": "tsx bench/extract-check.ts",
     "corpus:fetch": "tsx bench/corpus/fetch.ts",
     "test": "tsc --noEmit && vitest run"
   },

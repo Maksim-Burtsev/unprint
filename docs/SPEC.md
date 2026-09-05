@@ -80,6 +80,10 @@ export function extract(pdf: ArrayBuffer): Promise<PageModel[]>;
 Coordinates: PDF points, origin top-left, y grows downward (normalized from
 PDF's bottom-left origin at extraction time).
 
+`Img.mime` is always `image/png` for now: pdf.js hands the engine decoded
+pixels, which it re-encodes. Passing original JPEG bytes through is a later
+optimization.
+
 ### Benchmark
 
 `bench/corpus/manifest.json` lists every PDF: `{ id, url, class, pages, license }`.
