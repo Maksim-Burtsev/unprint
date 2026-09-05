@@ -6,3 +6,4 @@ bench/competitors/
 .DS_Store
 bench/report/index.html
 bench/report/thumbs/
+.superpowers/
