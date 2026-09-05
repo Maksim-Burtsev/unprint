@@ -155,7 +155,7 @@ const STEPS = [
  {n:"02", t:"Extract", repo:"unprint-engine", goal:"extract(pdf) → PageModel[]: every glyph run with position, font, bold/italic, color; every image; every vector rectangle. No layout yet.",
   agent:["Create private repo unprint-engine (@unprint/engine)","pdf.js extraction, coordinate normalization, run merging","Font family + bold/italic normalization","6 golden-test PDFs with expected JSON"],
   auto:["Golden tests pass","Median page < 50 ms","Text F1 vs raw pdf.js ≥ 0.98 (nothing lost)"],
-  you:["Run `npm run dump` on an article page: boxes and bold flags match the PDF?","Engine repo is private on GitHub"]},
+  you:["Run `npm run -s dump` on an article page: boxes and bold flags match the PDF?"]},
  {n:"03", t:"Paragraphs", repo:"unprint-engine", goal:"First end-to-end DOCX. Single-column prose becomes real paragraphs, headings become heading styles, bullets become Word lists.",
   agent:["Lines → paragraphs → headings → lists","docx writer with page geometry","convert(pdf) wired end to end"],
   auto:["Unit tests per module incl. justified-text guard","Bench: unprint ≥ pdf2docx on book, contract, resume"],
