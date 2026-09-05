@@ -39,30 +39,49 @@ export function docxToPdf(docx: string, outDir: string): string {
   return out;
 }
 
-const C1 = (0.01 * 255) ** 2, C2 = (0.03 * 255) ** 2, WIN = 8;
+const CELL = 16;
 
-/** Mean SSIM over 8×8 windows on a's grid; b is cropped/padded with white to a's size.
- *  ponytail: windows blank in BOTH images are skipped so a blank page does not score ~0.7 against text.
- *  Upgrade path: gaussian 11×11 windows if 8×8 blocks prove too coarse. */
-export function ssim(a: Gray, b: Gray): number {
-  const at = (g: Gray, x: number, y: number) => (x < g.w && y < g.h ? g.px[y * g.w + x]! : 255);
-  let sum = 0, n = 0;
-  for (let y0 = 0; y0 < a.h; y0 += WIN) for (let x0 = 0; x0 < a.w; x0 += WIN) {
-    let ma = 0, mb = 0, cnt = 0;
-    for (let y = y0; y < Math.min(y0 + WIN, a.h); y++) for (let x = x0; x < Math.min(x0 + WIN, a.w); x++) { ma += at(a, x, y); mb += at(b, x, y); cnt++; }
-    ma /= cnt; mb /= cnt;
-    let va = 0, vb = 0, cov = 0;
-    for (let y = y0; y < Math.min(y0 + WIN, a.h); y++) for (let x = x0; x < Math.min(x0 + WIN, a.w); x++) {
-      const da = at(a, x, y) - ma, db = at(b, x, y) - mb; va += da * da; vb += db * db; cov += da * db;
+/** Mean darkness per cell of a's grid; pixels outside g are white, keeping the pad/crop semantics. */
+function inkMap(g: Gray, w: number, h: number, cw: number, ch: number): Float64Array {
+  const v = new Float64Array(cw * ch);
+  for (let cy = 0; cy < ch; cy++) for (let cx = 0; cx < cw; cx++) {
+    let sum = 0, n = 0;
+    for (let y = cy * CELL; y < Math.min((cy + 1) * CELL, h); y++) for (let x = cx * CELL; x < Math.min((cx + 1) * CELL, w); x++) {
+      sum += x < g.w && y < g.h ? 255 - g.px[y * g.w + x]! : 0; n++;
     }
-    va /= cnt; vb /= cnt; cov /= cnt;
-    if (va < 1 && vb < 1) continue;
-    sum += ((2 * ma * mb + C1) * (2 * cov + C2)) / ((ma * ma + mb * mb + C1) * (va + vb + C2)); n++;
+    v[cy * cw + cx] = sum / (255 * n);
   }
-  return n === 0 ? 1 : sum / n;
+  return v;
+}
+
+/** 3×3 box blur, edge cells averaging the neighbours they have, so a one-cell shift still overlaps. */
+function blur(v: Float64Array, cw: number, ch: number): Float64Array {
+  const out = new Float64Array(v.length);
+  for (let y = 0; y < ch; y++) for (let x = 0; x < cw; x++) {
+    let sum = 0, n = 0;
+    for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+      const yy = y + dy, xx = x + dx;
+      if (yy < 0 || yy >= ch || xx < 0 || xx >= cw) continue;
+      sum += v[yy * cw + xx]!; n++;
+    }
+    out[y * cw + x] = sum / n;
+  }
+  return out;
+}
+
+/** Weighted Jaccard of the two blurred ink maps: how much of the ink lands in the same place.
+ *  A page laid out right in another font scores high, a blank page ~0, ink in the wrong place low.
+ *  ponytail: 16 px cells (≈ two text lines at 72 dpi) + box blur ignore small shifts and glyph shape.
+ *  Upgrade path: multi-scale or structure-aware comparison if a real engine saturates the metric. */
+export function inkOverlap(a: Gray, b: Gray): number {
+  const cw = Math.ceil(a.w / CELL), ch = Math.ceil(a.h / CELL);
+  const A = blur(inkMap(a, a.w, a.h, cw, ch), cw, ch), B = blur(inkMap(b, a.w, a.h, cw, ch), cw, ch);
+  let lo = 0, hi = 0;
+  for (let i = 0; i < A.length; i++) { lo += Math.min(A[i]!, B[i]!); hi += Math.max(A[i]!, B[i]!); }
+  return hi === 0 ? 1 : lo / hi;
 }
 
 export function visualScore(orig: Gray[], conv: Gray[]): number {
   if (orig.length === 0) return 1;
-  return orig.reduce((s, p, i) => s + (conv[i] ? ssim(p, conv[i]!) : 0), 0) / orig.length;
+  return orig.reduce((s, p, i) => s + (conv[i] ? inkOverlap(p, conv[i]!) : 0), 0) / orig.length;
 }
