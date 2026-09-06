@@ -88,15 +88,17 @@ optimization.
 
 `bench/corpus/manifest.json` lists every PDF: `{ id, url, class, pages, license }`.
 Classes: `article` (arXiv, multi-column), `invoice`, `resume`, `contract`,
-`form`, `slides`, `scan` (image-only), `book` (single column prose).
+`form`, `slides`, `scan` (image-only), `book` (single column prose),
+`magazine` (NASA newsletters and magazines: 2–3 columns, sidebars,
+two-page spreads; added after step 04, a small class that grows).
 `url` is either an `https://…` source or `gen:<kind>:<arg>` for documents we
 generate ourselves: `gen:invoice:<seed>`, `gen:resume:<seed>`,
 `gen:book:<gutenberg id>`, `gen:html:<url>` (an HTML source paginated by
 LibreOffice), `gen:scan:<source id>` (another manifest entry rasterized to an
 image-only PDF). `pages` is the number of pages *kept*: `npm run corpus:fetch`
 truncates longer files to the first `pages` pages (≤ 12), which bounds run
-time. Current corpus: 126 documents — article 20, book 15, contract 15,
-form 15, invoice 18, resume 18, scan 10, slides 15.
+time. Current corpus: 133 documents — article 20, book 15, contract 15,
+form 15, invoice 18, magazine 7, resume 18, scan 10, slides 15.
 PDFs are downloaded by `npm run corpus:fetch`, never committed.
 
 Scorer (`bench/score.ts`) per document:

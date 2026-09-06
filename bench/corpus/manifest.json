@@ -880,5 +880,54 @@
     "class": "slides",
     "pages": 12,
     "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "magazine-nasa-news-notes-30-3",
+    "url": "https://www.nasa.gov/wp-content/uploads/2023/11/nltr30-3.pdf",
+    "class": "magazine",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "magazine-nasa-ksc-spaceport-2014-06",
+    "url": "https://www3.nasa.gov/sites/default/files/atoms/files/ksc_spm_june2014.pdf",
+    "class": "magazine",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "magazine-nasa-ksc-spaceport-2017-07",
+    "url": "https://www.nasa.gov/wp-content/uploads/2015/05/spm_july_2017.pdf",
+    "class": "magazine",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "magazine-nasa-ksc-spaceport-2016-01",
+    "url": "https://www.nasa.gov/wp-content/uploads/2015/05/jan2016_0.pdf",
+    "class": "magazine",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "magazine-nasa-aero-stem-2025-04",
+    "url": "https://www.nasa.gov/wp-content/uploads/2025/04/apr-2025-nasa-aero-monthly-stem-newsletter.pdf",
+    "class": "magazine",
+    "pages": 6,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "magazine-nasa-lab-astro-2025-12",
+    "url": "https://www.nasa.gov/wp-content/uploads/2025/05/lab-astro-newsletter-issue-1-20251126-high-res.pdf",
+    "class": "magazine",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
+  },
+  {
+    "id": "magazine-nasa-lsah-2023-28-2",
+    "url": "https://www.nasa.gov/wp-content/uploads/2023/10/lsah-newsletter-2023-vol28-issue2.pdf",
+    "class": "magazine",
+    "pages": 12,
+    "license": "Public domain (NASA, GOV_PUBLIC_USE_PERMITTED)"
   }
 ]
