@@ -70,7 +70,8 @@ export function convert(pdf: ArrayBuffer, opts?: ConvertOptions): Promise<Conver
 
 // Intermediate model, exposed for the benchmark and for debugging
 export interface Run { text: string; x: number; y: number; w: number; h: number;
-                       font: string; size: number; bold: boolean; italic: boolean; color: string; }
+                       font: string; size: number; bold: boolean; italic: boolean; color: string;
+                       generic?: "serif" | "sans" | "mono"; }
 export interface Img { data: Uint8Array; mime: string; x: number; y: number; w: number; h: number; }
 export interface Rect { x: number; y: number; w: number; h: number; stroke: boolean; fill: boolean; color: string; }
 export interface PageModel { width: number; height: number; runs: Run[]; images: Img[]; rects: Rect[]; }
@@ -82,6 +83,10 @@ PDF's bottom-left origin at extraction time).
 
 `Rect.color` is the fill colour in force when the path was painted
 (`#rrggbb`); stroke colour is not tracked.
+
+`Run.generic` is the class from the PDF font descriptor flags (fixed pitch →
+mono, serif flag → serif, else sans), the fallback when `font` is not a family
+a reader knows.
 
 `Img.mime` is always `image/png` for now: pdf.js hands the engine decoded
 pixels, which it re-encodes. Passing original JPEG bytes through is a later
