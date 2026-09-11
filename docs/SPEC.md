@@ -81,8 +81,9 @@ export function extract(pdf: ArrayBuffer): Promise<PageModel[]>;
 Coordinates: PDF points, origin top-left, y grows downward (normalized from
 PDF's bottom-left origin at extraction time).
 
-`Rect.color` is the fill colour in force when the path was painted
-(`#rrggbb`); stroke colour is not tracked.
+`Rect.color` is the fill colour in force when the path was painted, blended
+toward white by the fill alpha (`ca`) (`#rrggbb`); stroke colour is not
+tracked. Rect and image boxes are cut to the rectangular clip in force.
 
 `Run.generic` is the class from the PDF font descriptor flags (fixed pitch →
 mono, serif flag → serif, else sans), the fallback when `font` is not a family
