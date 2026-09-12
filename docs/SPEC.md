@@ -85,8 +85,9 @@ PDF's bottom-left origin at extraction time). Coordinates and the page's
 `Rect.color` is the fill colour in force when the path was painted, blended
 toward white by the fill alpha (`ca`) (`#rrggbb`); stroke colour is not
 tracked. Rect and image boxes are cut to the rectangular clip in force.
-`rects` and `images` omit paints at fill alpha 0, fills in a pattern colour,
-the content of a soft mask's definition and paints under an active soft mask.
+`rects` and `images` omit fills at fill alpha 0 or in a pattern colour, the
+content of a soft mask's definition, and fills and images painted under an
+active soft mask.
 
 `Run.generic` is the class from the PDF font descriptor flags (fixed pitch →
 mono, serif flag → serif, else sans), the fallback when `font` is not a family
