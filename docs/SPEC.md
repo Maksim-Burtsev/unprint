@@ -79,11 +79,14 @@ export function extract(pdf: ArrayBuffer): Promise<PageModel[]>;
 ```
 
 Coordinates: PDF points, origin top-left, y grows downward (normalized from
-PDF's bottom-left origin at extraction time).
+PDF's bottom-left origin at extraction time). Coordinates and the page's
+`width`/`height` are those of the displayed page, after `/Rotate`.
 
 `Rect.color` is the fill colour in force when the path was painted, blended
 toward white by the fill alpha (`ca`) (`#rrggbb`); stroke colour is not
 tracked. Rect and image boxes are cut to the rectangular clip in force.
+`rects` and `images` omit paints at fill alpha 0, fills in a pattern colour,
+the content of a soft mask's definition and paints under an active soft mask.
 
 `Run.generic` is the class from the PDF font descriptor flags (fixed pitch →
 mono, serif flag → serif, else sans), the fallback when `font` is not a family
